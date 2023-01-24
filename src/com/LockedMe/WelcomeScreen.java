@@ -75,14 +75,7 @@ public class WelcomeScreen {
                   
 				
 				
-	/*				System.out.println("Deleting a file is selected");
-				else if(selection == 3 )
-					System.out.println("Searching a file is selected");
-				else if
-					(selection == 4)
-					
-					System.out.println("Navigating to the Main Screen");
-			
+	
 				
 			//1. Add New file to the list
 			//2. Delete a file in the list

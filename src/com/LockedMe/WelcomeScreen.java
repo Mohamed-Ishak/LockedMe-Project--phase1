@@ -1,7 +1,5 @@
 package com.LockedMe;
 
-import java.awt.Color;
-import java.util.Calendar;
 import java.util.Scanner;
 
 public class WelcomeScreen {
@@ -27,6 +25,10 @@ public class WelcomeScreen {
 		System.out.println("   2.3- Delete a specific File");
 		System.out.println("   2.4- Navigate to the Main Screen");
 	}
+	
+	public static void nestedMenu() {
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -41,7 +43,8 @@ public class WelcomeScreen {
 		SpecifiedFilesDatabaseList database = new SpecifiedFilesDatabaseList();
 		SpecifiedFiles sp = new SpecifiedFiles();
 		int supOption = 0;
-
+        boolean nestedMenu = true ;
+		
 		while (true) {
 			displayMenu();
 			int choice = input.nextInt();
@@ -50,7 +53,6 @@ public class WelcomeScreen {
 			case 1:
 				// Option 1
 				// Display all the files names in ascending order
-				// database.updateFiles(sp);
 				if (database.displayAllFiles().size() == 0)
 					System.out.println("No Files Are Added Yet");
 
@@ -62,8 +64,7 @@ public class WelcomeScreen {
 
 			case 2:
 				// Option 2
-				// Nested switch Statement : enter the the matched character to select the
-				// option
+				// Nested switch Statement : enter the the matched character to select the option
 				// Add , Delete and Search => a user specified file or Navigate to the main
 
 				if (choice == 2) {
@@ -72,7 +73,7 @@ public class WelcomeScreen {
 
 				}
 
-				while (true) {
+				do {
 
 					supOption = input.nextInt();
 
@@ -92,24 +93,32 @@ public class WelcomeScreen {
 						break;
 					case 2:
 						// 2. Search for a file in the list
-
+						System.out.println("Enter the File id to search on it ");
+						int fiId  = input.nextInt();
+						System.out.println(database.getFileDetails(fiId));
+                        
 						break;
 					case 3:
 						// 3. Delete a file in the list
+						System.out.println("Enter the file ID to delete it ");
+						int fileId = input.nextInt();
+						database.deleteFile(fileId);
+						System.out.println("File is deleted successfully ");
 						break;
 					case 4:
 						// 4. Navigate back to the main context
 						displayMenu();
-						break;
-
+						nestedMenu = false ;
 					}
-					break;
-				}
-
+					
+				}while(nestedMenu);
+				
+            
+			
 			case 3:
 				// Option 3
 				// Close the application
-				System.out.println("Application is closed");
+				System.out.println(" Application is closed");
 				System.exit(choice);
 
 				input.close();

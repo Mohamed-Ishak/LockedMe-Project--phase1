@@ -25,6 +25,7 @@ public class SpecifiedFilesDatabaseList {
 		return files ;
 		}
 	
+	
 	public boolean updateFiles(SpecifiedFiles sp) {
 		
 		for (int i = 1; i < files.size(); i++) {
@@ -49,6 +50,16 @@ public class SpecifiedFilesDatabaseList {
 		}
 		
 		return false ;
+	}
+	
+	public SpecifiedFiles getFileDetails(int id) {
+		
+		for (int i = 0; i < files.size(); i++) {
+			if(files.get(i).getId() == id) {
+				return files.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public boolean addSpecifiedFile(SpecifiedFiles file) {

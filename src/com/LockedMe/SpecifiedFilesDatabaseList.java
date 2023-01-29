@@ -1,43 +1,35 @@
 package com.LockedMe;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class SpecifiedFilesDatabaseList {
+public class SpecifiedFilesDatabaseList implements Comparator<SpecifiedFiles>{
 	
 
-	private  List<SpecifiedFiles> files ;
-
+	private List<SpecifiedFiles> files ;
+	SpecifiedFiles FOF ;
 	
+	
+	
+	//Constructor to initialize the arrayList of files 
 	public SpecifiedFilesDatabaseList() {
 		   
-		files = new ArrayList<>();
-		
+		files = new ArrayList<>();	
 	}
 	
-		 		
-     public  void addFile(SpecifiedFiles sp) {
+	// Adding New File in the list	 		
+     public  void addNewFile(SpecifiedFiles sp) {
     	 files.add(sp);
      }
 	
+     // to display all the added files in the list
 	public List<SpecifiedFiles> displayAllFiles() {
 		
 		return files ;
 		}
-	
-	
-	public boolean updateFiles(SpecifiedFiles sp) {
-		
-		for (int i = 1; i < files.size(); i++) {
-			
-			if(files.get(i).getId() == sp.getId()) {
-			files.set(i, sp);
-			return true ;
-			}
-				
-		}
-		return false;
-	}
+
+	// to delete a a specific file using the file id 
 	
 	public boolean deleteFile(int id) {
 		
@@ -52,6 +44,8 @@ public class SpecifiedFilesDatabaseList {
 		return false ;
 	}
 	
+	
+	// to search for a file in the list with the file id
 	public SpecifiedFiles getFileDetails(int id) {
 		
 		for (int i = 0; i < files.size(); i++) {
@@ -59,7 +53,10 @@ public class SpecifiedFilesDatabaseList {
 				return files.get(i);
 			}
 		}
-		return null;
+
+		return new SpecifiedFiles("File is not Found");
+	       
+			
 	}
 	
 	public boolean addSpecifiedFile(SpecifiedFiles file) {
@@ -67,5 +64,16 @@ public class SpecifiedFilesDatabaseList {
 		
 		return false;
 	}
+
+
+	@Override
+	public int compare(SpecifiedFiles o1, SpecifiedFiles o2) {
+		
+		return o1.getFileName().compareTo(o2.getFileName());
+	}
+
+
+
+
 
 }

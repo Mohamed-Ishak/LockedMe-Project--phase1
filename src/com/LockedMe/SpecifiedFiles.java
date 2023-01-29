@@ -3,6 +3,7 @@ package com.LockedMe;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class SpecifiedFiles {
 
 	String fileName;
@@ -10,7 +11,14 @@ public class SpecifiedFiles {
 	private int id;
 	Calendar calendar;
 
+	
 	public SpecifiedFiles() {
+		
+	}
+
+	public SpecifiedFiles(String fof) {
+	
+		System.out.println(fof);
 	}
 
 	public SpecifiedFiles(String fileName, String dirName, int id) {
@@ -50,11 +58,18 @@ public class SpecifiedFiles {
 
 		return date.format(calendar.getTime());
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "SpecifiedFiles [" + " fileName : " + fileName + ", dirName : " + dirName + ", id : " + id
-				+ ", Created Date : " + getCurruntDate() + "]";
+		return "SpecifiedFiles : " +"\n"+
+	                           " FileName : " + fileName + "\n" + 
+				               " DirName : " + dirName + "\n"+ 
+	                           " ID : " + id + "\n"+ 
+				               " Created Date : " + getCurruntDate() ;
 	}
+	
+
 
 }

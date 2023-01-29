@@ -55,18 +55,28 @@ public void display() {
 			int choice = input.nextInt();
 
 			switch (choice) {
+			case 1:
+				// Option 1
+				// Display all the files names in ascending order
+				if (database.displayAllFiles().size() == 0)
+					System.out.println("No Files Are Added Yet");
 
+				for (SpecifiedFiles f : database.displayAllFiles()) {
+					System.out.println(f);
+				}
+				System.out.println();
+				break;
 
 			case 2:
 				// Option 2
 				// Nested switch Statement : enter the the matched character to select the option
 				// Add , Delete and Search => a user specified file or Navigate to the main
 
-				if (choice == 2) {
+				while(true) {	
 					System.out.println(" Select from the Sub menu ");
 					supMenuOptions();
 					supOption = input.nextInt();
-
+			
 					switch (supOption) {
 					case 1:
 						// 1. Add New file to the list
@@ -98,6 +108,7 @@ public void display() {
 					case 4:
 						// 4. Navigate back to the main context
 						 displayMenu();
+						 choice = input.nextInt();
 						if(choice == 1) {
 							if (database.displayAllFiles().size() == 0)
 								System.out.println("No Files Are Added Yet");
@@ -109,33 +120,25 @@ public void display() {
 						}  
 						else if(choice == 2) { 
 					        supMenuOptions();
+					        break;
 						}
-						else
-							input.close();
-						break;
+						else if(choice == 3)
+							System.out.println(" Application is closed");
+							System.exit(choice);
+						    
+		
 					}
+			      }
 				
-				}
-			case 1:
-				// Option 1
-				// Display all the files names in ascending order
-				if (database.displayAllFiles().size() == 0)
-					System.out.println("No Files Are Added Yet");
-
-				for (SpecifiedFiles f : database.displayAllFiles()) {
-					System.out.println(f);
-				}
+			case 5:
 				System.out.println();
-				break;
+			break;
 			case 3:
 				// Option 3
 				// Close the application
 				System.out.println(" Application is closed");
 				System.exit(choice);
      			input.close();
-				break;
-
-			default:
 				break;
 			}
 
